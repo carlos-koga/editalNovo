@@ -1,0 +1,31 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 15.1
+-- Dumped by pg_dump version 15.4
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Data for Name: carrinho_json; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.carrinho_json VALUES (2500002, '{"arte": "não", "lote": "<table border=\"1\"><thead><tr><th>Lotes</th><th>Coluna 2</th></tr></thead><tbody><tr><td>Valor 1</td><td>Lorem dfsd sdadsadsadsadsadsadasdasdasdasd</td></tr><tr><td>Valor 3</td><td>Valor 4</td></tr></tbody></table>", "pauta": "<table border=\"1\" cellspacing=\"0\" cellpadding=\"4\"><thead><tr><th>Ordem</th><th>Responsável</th><th>Departamento</th><th>Data de Distribuição</th><th>Observações</th></tr></thead><tbody><tr><td>1</td><td>João Silva</td><td>Financeiro</td><td>2025-06-10</td><td>Aguardando aprovação</td></tr><tr><td>2</td><td>Maria Oliveira</td><td>Recursos Humanos</td><td>2025-06-11</td><td>Em processamento</td></tr><tr><td>3</td><td>Pedro Santos</td><td>Tecnologia da Informação</td><td>2025-06-12</td><td>Finalizado</td></tr></tbody></table>", "objeto": "A presente licitação tem como objeto a aquisição de [Capacete para Ocupantes de Motocicletas - viseira manual - modelo 2 - Tamanhos 56, 58, 60, 62 e 64] , discriminados no quadro abaixo, conforme Especificação Técnica e demais condições deste Edital e seus Anexos.", "carrinho": 2500002, "sections": {"lances": "aberto", "quantitativo_minimo": 2, "local_entrega_exemplares": 3}, "ano_edital": 2025, "tipo_objeto": "Aquisição", "numero_edital": 3434, "modalidade_ano": 2024, "objeto_sucinto": "Aquisição de capacete", "email_licitacao": "cpl@correios.com.br", "data_hora_inicio": "30/06/2025 às 14h00", "regra_tributaria": "ICMS, observando-se as regras de diferencial de alíquota e substituição tributária.", "data_hora_disputa": "30/06/2025 às 15h05", "modalidade_edital": {"grupo": "1", "modalidade": "DLE", "modalidade_tipo": "Dispensa de Licitação por Valor Eletrônica", "forma_contratacao": "C"}, "data_hora_abertura": "30/06/2025 às 14h15", "endereco_licitacao": "Rua Baventura 401", "telefone_licitacao": "(31) 5555-5555", "criterio_julgamento": "Menor preço"}');
+INSERT INTO public.carrinho_json VALUES (2500003, '{"arte": "não", "lote": "<table border=\"1\"><thead><tr><th>Coluna 1</th><th>Coluna 2</th></tr></thead><tbody><tr><td>Valor 1</td><td>dfdsf fds dsf sdfdsf ds fsdf 2</td></tr><tr><td>fdsfdsfd sfdsf dsf sdf sdf3</td><td>Valor 4</td></tr></tbody></table>", "pauta": "<table border=\"1\" cellspacing=\"0\" cellpadding=\"4\"><thead><tr><th>Ordem</th><th>Responsável</th><th>Departamento</th><th>Data de Distribuição</th><th>Observações</th></tr></thead><tbody><tr><td>1</td><td>João Silva</td><td>Financeiro</td><td>2025-06-10</td><td>Aguardando aprovação</td></tr><tr><td>2</td><td>Maria Oliveira</td><td>Recursos Humanos</td><td>2025-06-11</td><td>Em processamento</td></tr><tr><td>3</td><td>Pedro Santos</td><td>Tecnologia da Informação</td><td>2025-06-12</td><td>Finalizado</td></tr></tbody></table>", "objeto": "A presente licitação tem como objeto a aquisição de tonner preto, discriminados no quadro abaixo, conforme Especificação Técnica e demais condições deste Edital e seus Anexos.", "carrinho": 2500001, "ano_edital": 2025, "tipo_objeto": "Aquisição", "numero_edital": 12345, "modalidade_ano": 2025, "objeto_sucinto": "Aquisição de insumo de impressão", "email_licitacao": "cpl@correios.com.br", "data_hora_inicio": "30/06/2025 às 14h00", "regra_tributaria": "ICMS, observando-se as regras de diferencial de alíquota e substituição tributária.", "data_hora_disputa": "30/06/2025 às 15h05", "modalidade_edital": {"grupo": "6", "modalidade": "XE", "modalidade_tipo": "Pregão Eletrônico", "forma_contratacao": "SRP"}, "data_hora_abertura": "30/06/2025 às 14h15", "endereco_licitacao": "Av. Afonso Pena 1270", "telefone_licitacao": "(31) 3333-34656", "criterio_julgamento": "Menor preço"}');
+INSERT INTO public.carrinho_json VALUES (2500001, '{"arte": "não", "lote": "<table border=\"1\"><thead><tr><th>Coluna 1</th><th>Coluna 2</th></tr></thead><tbody><tr><td>sdadsadsadsadsasad sa cv dsfsf1333</td><td>Valor 2</td></tr><tr><td>Valor 3 sdgfjyutikyu rtyn rty</td><td>Valor 4</td></tr></tbody></table>", "pauta": "<table border=\"1\" cellspacing=\"0\" cellpadding=\"4\"><thead><tr><th>Ordem</th><th>Responsável</th><th>Departamento</th><th>Data de Distribuição</th><th>Observações</th></tr></thead><tbody><tr><td>1</td><td>João Silva</td><td>Financeiro</td><td>2025-06-10</td><td>Aguardando aprovação</td></tr><tr><td>2</td><td>Maria Oliveira</td><td>Recursos Humanos</td><td>2025-06-11</td><td>Em processamento</td></tr><tr><td>3</td><td>Pedro Santos</td><td>Tecnologia da Informação</td><td>2025-06-12</td><td>Finalizado</td></tr></tbody></table>", "objeto": "A presente licitação tem como objeto a aquisição de [Capacete para Ocupantes de Motocicletas - viseira manual - modelo 2 - Tamanhos 56, 58, 60, 62 e 64] ,discriminados no quadro abaixo, conforme Especificação Técnica e demais condições deste Edital e seus Anexos.", "carrinho": 2500001, "sections": {"lances": "aberto", "quantitativo_minimo": 1, "local_entrega_exemplares": 3}, "ano_edital": "2024", "tipo_objeto": "Aquisição", "numero_edital": "9999", "modalidade_ano": 2025, "objeto_sucinto": "Aquisição de capacete", "email_licitacao": "cpl@correios.com.br", "data_hora_inicio": "30/06/2025 às 14h00", "regra_tributaria": "ICMS, observando-se as regras de diferencial de alíquota e substituição tributária.", "data_hora_disputa": "30/06/2025 às 15h05", "modalidade_edital": {"grupo": "1", "modalidade": "XE", "modalidade_tipo": "Pregão Eletrônico", "forma_contratacao": "SRP"}, "data_hora_abertura": "30/06/2025 às 14h15", "endereco_licitacao": "Av Isabel Bueno 442", "telefone_licitacao": "(31) 5555-5555", "criterio_julgamento": "Menor preço"}');
+
+
+--
+-- PostgreSQL database dump complete
+--
+

@@ -160,17 +160,13 @@ CREATE UNIQUE INDEX IF NOT EXISTS idx_edital_clausula_unique
     (edt_id ASC NULLS LAST, cls_nu ASC NULLS LAST)
     TABLESPACE pg_default;
 
--- TABELA DE SECAO
-CREATE TABLE IF NOT EXISTS public.secao (
-    sec_nu integer NOT NULL GENERATED ALWAYS AS IDENTITY,
-    blc_nu integer NOT NULL,
-    sec_tx character varying(500) NOT NULL,
-    sec_in_ativo character varying(1) NOT NULL DEFAULT 'A',
-    sec_dt_inicio date NOT NULL DEFAULT now(),
-    sec_dt_fim date,
-    sec_nu_ordem integer,
-    CONSTRAINT secao_pk PRIMARY KEY (sec_nu)
-);
+-- TABELA DE INTERFACE CARRINHO X EDITAL
+CREATE TABLE IF NOT EXISTS public.carrinho_json
+(
+    crr_nu_carrinho integer NOT NULL,
+    json_data jsonb NOT NULL,
+    CONSTRAINT carrinho_json_pkey PRIMARY KEY (crr_nu_carrinho)
+)
 
 -- TABELA DE EDITAL_SECAO
 CREATE TABLE IF NOT EXISTS public.edital_secao (
