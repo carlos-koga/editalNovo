@@ -1,0 +1,127 @@
+	
+ html, body {font-size: 11pt; font-family: Calibri}
+ section {background-color: #b3d9ff;}
+ .highlight {
+            background-color: yellow; /* Cor de fundo destacada */
+            font-weight: bold; /* Texto em negrito */
+            padding: 2px;
+            border-radius: 5px;
+        }
+		
+		#divAnexos {
+  border: 2px dashed purple;
+  padding: 8px;    /* ajuste conforme desejar */
+}
+
+
+
+        h2 { text-align: center; font-size: 24px;}
+
+        ol {
+            list-style: none;
+            counter-reset: level1;
+            padding-left: 0;
+            margin-left: 0;
+        }
+        ol li[data-level="1"] {
+            counter-increment: level1;
+            counter-reset: level2; /* Reinicia o contador do nível 2 */                        
+        }
+        ol li[data-level="1"]::before {
+            content: counter(level1) ". ";
+
+        }
+        ol li[data-level="2"] {
+            counter-increment: level2;
+            counter-reset: level3; /* Reinicia o contador do nível 3 */
+        }
+        ol li[data-level="2"]::before {
+            content: counter(level1) "." counter(level2) ". ";
+        }
+        ol li[data-level="3"] {
+            counter-increment: level3;
+            counter-reset: level4; /* Reinicia o contador do nível 4 */
+        }
+        ol li[data-level="3"]::before {
+            content: counter(level1) "." counter(level2) "." counter(level3) ". ";
+        }
+        ol li[data-level="4"] {
+            counter-increment: level4;            
+        }
+        ol li[data-level="4"]::before {            
+            content: counter(level1) "." counter(level2) "." counter(level3) "." counter(level4) ". ";
+        }
+
+        ol li[data-level="5"] {
+            counter-increment: level5;            
+        }
+        ol li[data-level="5"]::before {
+            content: counter(level1) "." counter(level2) "." counter(level3) "." counter(level4) "." counter(level5) ". ";
+        }
+
+	
+      li {
+        margin-top: 10px; /* Ajuste o valor conforme necessário */
+      }
+
+        
+         ol.roman {
+            list-style: none;
+            counter-reset: section;
+            padding-left: 0;
+            margin-left: 0;
+        }
+        ol.roman li[data-level="1"] {
+            counter-increment: section;
+            counter-reset: subsection; /* Reinicia os subitens */
+            text-align: left;
+            font-weight: normal;
+            font-size: 11pt;                        
+            padding-bottom: 0px;      
+            padding-top: 0;      
+            padding-left: 15px;     
+        }
+        ol.roman li[data-level="1"]::before {
+            content: counter(section, upper-roman) ". ";
+            
+        }
+        ol.roman li[data-level="2"] {
+            counter-increment: subsection;
+            padding-bottom: 0;   
+            padding-top: 0;         
+            padding-left: 10px;
+
+        }
+        ol.roman li[data-level="2"]::before {
+            content: counter(section, upper-roman) "-" counter(subsection, upper-alpha) ") ";
+        }
+
+        ol.alpha {
+            list-style-type: none;
+            counter-reset: section;
+            padding-left: 15px;
+            margin-left: 0;
+        }
+
+        ol.alpha li[data-level="1"] {
+            counter-increment: section;
+            counter-reset: subsection; /* Reinicia os subitens */
+            text-align: left;
+            font-weight: normal;
+            font-size: 11pt;
+            padding-bottom: 0;   
+            padding-top: 0;         
+        }
+        ol.alpha li[data-level="1"]::before {
+            content: counter(section, lower-alpha) ") ";            
+        }
+        ol.alpha li[data-level="2"] {
+            counter-increment: subsection;
+            padding-bottom: 0; 
+            padding-top: 0;      
+            padding-left: 10px;     
+        }
+        ol.alpha li[data-level="2"]::before {
+            content: counter(section, lower-alpha) "-" counter(subsection) ") ";
+        }
+  

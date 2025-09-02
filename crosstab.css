@@ -1,0 +1,71 @@
+.tabela {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+.linha {
+    display: flex;
+    padding: 0;
+}
+
+
+.coluna {
+    flex: 1;
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+    max-width: 80px;
+    /* Define largura mínima */
+}
+
+.coluna.vertical {
+    writing-mode: vertical-rl;  /* Texto na vertical */
+    text-orientation: mixed; /* Mantém a leitura correta */
+    transform: rotate(180deg); /* totalmente vertical  */
+    white-space: nowrap;            /* Impede quebras */
+    text-align: left;                        
+    width: 80px;
+    flex: 1;           
+}
+
+
+
+
+.coluna.toggle-content,
+.coluna.texto {
+    flex: none;     /* Aumenta o espaço da coluna de texto */
+    min-width: 150px !important;
+    max-width: 500px !important;    /* Permite ajustes sem expansão infinita */
+    width: 400px !important;
+    overflow: hidden;
+    white-space: normal;            
+    word-wrap: break-word;
+}
+
+
+
+.expandido {
+    max-width: none;    /* Remove limite para expansão */
+    overflow: visible;
+}
+
+.cabecalho {
+    font-weight: bold;
+    background-color: #f4f4f4;            
+}
+
+.center {
+    text-align: center;
+}
+
+.botoes-container {
+    padding-top: 10px;
+	margin-bottom: 10px;
+	display: none;
+}
+
+.hidden {
+    display: none;
+}

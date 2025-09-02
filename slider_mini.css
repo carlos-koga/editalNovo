@@ -1,0 +1,56 @@
+/* =====================================================
+   SWITCH – versão “padrão” (60 × 20 px)
+   ===================================================== */
+.switch{
+  position:relative;
+  display:inline-block;
+  width:60px;
+  height:20px;
+}
+.switch input{
+  opacity:0;
+  width:0;
+  height:0;
+}
+.slider{
+  position:absolute;
+  cursor:pointer;
+  inset:0;                       /* top/left/right/bottom = 0 */
+  background:#ccc;
+  transition:.4s;
+}
+.slider:before{
+  content:'';
+  position:absolute;
+  width:18px;
+  height:18px;
+  left:2px;
+  bottom:2px;
+  background:#fff;
+  transition:.4s;
+}
+
+input:checked + .slider{background:#2196f3;}
+input:focus   + .slider{box-shadow:0 0 1px #2196f3;}
+input:checked + .slider:before{transform:translateX(36px);}
+
+/* Estilo arredondado */
+.slider.round      {border-radius:34px;}
+.slider.round:before{border-radius:50%;}
+
+/* =====================================================
+   SWITCH “mini” (40 × 16 px) – basta usar .switch.sm
+   ===================================================== */
+.switch.sm{                       /* corpo menor */
+  width:40px;
+  height:16px;
+}
+.switch.sm .slider:before{        /* botão menor */
+  width:14px;
+  height:14px;
+  left:2px;
+  bottom:1px;
+}
+.switch.sm input:checked + .slider:before{
+  transform:translateX(22px);     /* 40-14-(2*2) = 22 */
+}

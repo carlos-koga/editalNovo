@@ -1,0 +1,93 @@
+<?php
+require('../vendor/autoload.php');
+
+use App\Database\Connect; 
+
+header('Content-Type: text/html; charset=utf-8');
+
+if (isset($_POST['txtID'])) {
+   $idAtual = $_POST['txtID'];
+} elseif (isset($_GET['txtID'])) {
+    $idAtual = $_GET['txtID'];
+}    
+
+if (isset($_POST['txtOper'])) {
+   $oper  = $_POST['txtOper'];
+} elseif (isset($_GET['txtOper'])) {
+   $oper  = $_GET['txtOper'];   
+}   
+
+if (isset($_POST['txtTitulo']) )
+    $titulo = $_POST['txtTitulo'];
+
+if (isset($_POST['txtTexto']) )
+    $texto = $_POST['txtTexto'];
+
+
+if (($oper == 'inc') ||  ($oper == 'ed')  ) {
+    $texto = str_replace('<!--?xml encoding="utf-8" ?-->', '', $texto);
+
+
+    $textNoHTML = strip_tags($texto);
+
+    $resumo = mb_strlen($textNoHTML) > 70 ? mb_substr($textNoHTML, 0, 70) . '...' : $textNoHTML;
+}
+
+$con =  new Connect();
+if (empty($con->getErrorMessage())) {
+    $con->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $stmt = $con->pdo->prepare("SELECT set_config('application.user', 'Koga', false)");
+    $stmt->execute();
+
+
+    if ($oper == 'inc') {        
+
+        try {
+            $stmt = $con->pdo->prepare("INSERT INTO section (sec_titulo, sec_conteudo) VALUES(:titulo, :conteudo)");
+            $stmt->execute([':titulo' => $titulo, ':conteudo' => $texto]);            
+            
+        } catch (Exception $e) {            
+            echo "Erro: " . $e->getMessage();
+        }
+    } elseif ($oper == 'ed') {
+        $stmt = $con->pdo->prepare("UPDATE section SET sec_titulo=:titulo, sec_conteudo=:conteudo  WHERE sec_id = :id_atual");
+        $stmt->execute([':titulo' => $titulo, ':conteudo' => $texto, ':id_atual' => $idAtual]);
+        //renderRow($idAtual, $nivel, $texto, $resumo, $stack = [], $isNew = false) ;
+    } elseif ($oper == 'del') {
+        $con->pdo->beginTransaction();
+        $stmt = $con->pdo->prepare("DELETE FROM section WHERE sec_id = :id_atual");
+        $stmt->execute([':id_atual' => $idAtual]);        
+        $con->pdo->commit();
+    } elseif ($oper == 'toggle') {
+        $elemento = $_POST['txtCampo'];         
+        $valor = $_POST['txtValor'];
+        $sql = "UPDATE section SET sec_ativo = :valor ";  
+        try {                
+                $sql .= " WHERE sec_id = :id ";
+                $stmt = $con->pdo->prepare($sql);
+                $stmt->execute([                                    
+                    ':valor' => $valor,
+                    ':id' => $idAtual
+                ]);
+            } catch (PDOException $e) {
+                echo "Erro ao ativar/desativar section: " . $e->getMessage();
+            }    
+
+        
+    } elseif ($oper == 'get') {
+        $stmt = $con->pdo->prepare("SELECT sec_conteudo FROM section WHERE sec_id = :id_atual");
+        $stmt->execute([':id_atual' => $idAtual]);
+        $conteudo  = $stmt->fetchColumn();
+        echo $conteudo;
+
+    } elseif ($oper == 'getjson') {
+        $stmt = $con->pdo->prepare("SELECT sec_titulo, sec_conteudo, sec_ativo FROM section WHERE sec_id = :id_atual");
+        $stmt->execute([':id_atual' => $idAtual]);        
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        header('Content-Type: application/json');
+        echo json_encode($resultado);
+
+    }
+}  else {
+    echo $con->getErrorMessage();
+}

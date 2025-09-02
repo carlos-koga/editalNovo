@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Automático</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        form { width: 50%; margin: auto; padding: 20px; border: 1px solid #ccc; }
+        label { font-weight: bold; display: block; margin-top: 10px; }
+        input, textarea { width: 100%; padding: 5px; margin-top: 5px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    </style>
+</head>
+<body>
+
+    <form id="dynamicForm"></form>
+
+    <script>
+       const jsonData = {
+            "arte": "não",
+            "lote": "<table border=\"1\"><thead><tr><th>Coluna 1</th><th>Coluna 2</th></tr></thead><tbody><tr><td>Valor 1</td><td>Valor 2</td></tr><tr><td>Valor 3</td><td>Valor 4</td></tr></tbody></table>",
+            "pauta": "<table border=\"1\" cellspacing=\"0\" cellpadding=\"4\"><thead><tr><th>Ordem</th><th>Responsável</th><th>Departamento</th><th>Data de Distribuição</th><th>Observações</th></tr></thead><tbody><tr><td>1</td><td>João Silva</td><td>Financeiro</td><td>2025-06-10</td><td>Aguardando aprovação</td></tr><tr><td>2</td><td>Maria Oliveira</td><td>Recursos Humanos</td><td>2025-06-11</td><td>Em processamento</td></tr><tr><td>3</td><td>Pedro Santos</td><td>Tecnologia da Informação</td><td>2025-06-12</td><td>Finalizado</td></tr></tbody></table>",
+            "objeto": "A presente licitação tem como objeto a aquisição de Capacete para Ocupantes de Motocicletas.",
+            "carrinho": 2500001,
+            "tipo_objeto": "Aquisição",
+            "modalidade_ano": 2025,
+            "objeto_sucinto": "Aquisição de capacete",
+            "regra_tributaria": "ICMS, observando-se as regras de diferencial de alíquota e substituição tributária.",
+            "modalidade_edital": {
+                "grupo": 1,
+                "modalidade": "XE",
+                "modalidade_tipo": "Pregão Eletrônico",
+                "forma_contratacao": "SRP"
+            },
+            "numero_edital": 12345,
+            "ano_edital": 2025,
+            "criterio_julgamento": "Menor preço"
+        };
+    
+        function generateForm(jsonData) {
+            const form = document.getElementById('dynamicForm');
+    
+            Object.keys(jsonData).forEach(key => {
+                const value = jsonData[key];
+    
+                const label = document.createElement('label');
+                label.textContent = key.replace(/_/g, ' ').toUpperCase();
+                form.appendChild(label);
+    
+                if (typeof value === 'object' && value !== null) {
+                    const textarea = document.createElement('textarea');
+                    textarea.value = JSON.stringify(value, null, 2);
+                    form.appendChild(textarea);
+                } else if (typeof value === 'number') {
+                    const input = document.createElement('input');
+                    input.type = 'number';
+                    input.value = value;
+                    form.appendChild(input);
+                } else if (typeof value === 'string' && value.includes('<table')) {
+                    const div = document.createElement('div');
+                    div.innerHTML = value;
+                    form.appendChild(div);
+                } else {
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.value = value;
+                    form.appendChild(input);
+                }
+            });
+        }
+    
+        document.addEventListener('DOMContentLoaded', () => generateForm(jsonData));
+    </script>
+    
+</body>
+</html>
